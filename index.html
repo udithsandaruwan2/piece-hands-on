@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interesting Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #1e1e1e; /* Darker container background */
+            padding: 20px;
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out; /* Animation for hover effect */
+        }
+
+        .container:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #bb86fc; /* Purple button color */
+            color: #121212; /* Dark text color for contrast */
+            border: none;
+            border-radius: 8px; /* Rounded corners */
+            transition: background-color 0.3s, transform 0.3s; /* Animation for hover effect */
+        }
+
+        button:hover {
+            background-color: #3700b3; /* Darker purple on hover */
+            transform: translateY(-3px); /* Slight lift on hover */
+        }
+
+        .fact-display {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #e0e0e0; /* Light text color for contrast */
+            transition: opacity 0.5s ease-in-out; /* Fade-in effect */
+            opacity: 0;
+        }
+
+        .fact-display.show {
+            opacity: 1; /* Show fact with fade-in */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Click the button to learn an interesting fact!</h1>
+        <button id="factButton">Show me a fact</button>
+        <div id="factDisplay" class="fact-display"></div>
+    </div>
+    <script>
+        const facts = [
+            {
+                "fact": "Bananas are berries, but strawberries aren't!",
+                "description": "In botanical terms, bananas qualify as berries, while strawberries do not."
+            },
+            {
+                "fact": "Honey never spoils.",
+                "description": "Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible."
+            },
+            {
+                "fact": "Octopuses have three hearts.",
+                "description": "Two pump blood to the gills, while the third pumps it to the rest of the body."
+            },
+            {
+                "fact": "A day on Venus is longer than a year on Venus.",
+                "description": "Venus takes about 243 Earth days to rotate once but only 225 Earth days to orbit the Sun."
+            },
+            {
+                "fact": "Wombat poop is cube-shaped.",
+                "description": "This unique shape prevents the poop from rolling away and helps mark their territory."
+            },
+            {
+                "fact": "The Eiffel Tower can be 15 cm taller during the summer.",
+                "description": "The iron structure expands in the heat, making it slightly taller."
+            },
+            {
+                "fact": "A group of flamingos is called a 'flamboyance.'",
+                "description": "This fitting term reflects their colorful and striking appearance."
+            },
+            {
+                "fact": "There are more stars in the universe than grains of sand on Earth.",
+                "description": "The observable universe contains an estimated 1,000,000,000,000,000,000,000,000 stars."
+            },
+            {
+                "fact": "The shortest war in history lasted 38 to 45 minutes.",
+                "description": "It was fought between the British Empire and the Sultanate of Zanzibar on August 27, 1896."
+            },
+            {
+                "fact": "Sloths can hold their breath longer than dolphins.",
+                "description": "Sloths can slow their heart rate and hold their breath for up to 40 minutes underwater."
+            }
+        ];
+
+        document.getElementById('factButton').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const fact = facts[randomIndex];
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.innerHTML = `<strong>${fact.fact}</strong><br>${fact.description}`;
+            
+            // Add class to trigger fade-in animation
+            factDisplay.classList.remove('show');
+            setTimeout(() => factDisplay.classList.add('show'), 10);
+        });
+    </script>
+</body>
+</html>
